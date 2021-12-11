@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@apollo/client": "^3.5.6",
+    "@prisma/client": "^3.6.0",
     "axios": "^0.24.0",
     "cuid": "^2.1.8",
     "graphql": "^16.1.0",
