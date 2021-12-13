@@ -33,6 +33,7 @@ model Session {
   sessionToken String   @unique
   userId       String
   expires      DateTime
+
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
@@ -44,6 +45,8 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  tickets       Ticket[]
+  ticketReplies TicketReplies[]
 }
 
 model VerificationToken {
@@ -52,4 +55,35 @@ model VerificationToken {
   expires    DateTime
 
   @@unique([identifier, token])
+}
+
+model Ticket {
+    id          String      @id @default(cuid())
+    state       State       @default(OPEN)
+    author      String
+    addon       Int
+    title       String
+    description String
+    createdAt   DateTime    @default(now())
+    latestReply DateTime?
+    replies     TicketReplies[]
+
+    user        User    @relation(fields: [author], references: [id])
+}
+
+enum State {
+    OPEN
+    CLOSED
+    LOCKED
+    HOLD
+}
+
+model TicketReplies {
+    id          String @id @default(cuid())
+    ticketId    String
+    author      String
+    description String
+
+    ticket      Ticket @relation(fields: [ticketId], references: [id])
+    user        User   @relation(fields: [author], references: [id])
 }
