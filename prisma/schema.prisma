@@ -12,7 +12,7 @@ model Account {
   userId             String
   type               String
   provider           String
-  providerAccountId  String @unique
+  providerAccountId  String  @unique
   refresh_token      String?
   access_token       String?
   expires_at         Int?
@@ -40,8 +40,10 @@ model Session {
 model User {
   id            String    @id @default(cuid())
   name          String?
+  email         String?   @unique
   blocked       Boolean   @default(false)
   role          Role      @default(USER)
+  emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
