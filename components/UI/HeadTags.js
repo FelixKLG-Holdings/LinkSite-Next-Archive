@@ -8,8 +8,7 @@ const defaultOGImage = 'https://leystryku.support/assets/'
 const HeadTags = (props) => (
         <NextHead>
             <meta charSet="UTF-8"/>
-            <title>Leystryku Support</title>
-            <title>FelixKLG | {props.title || 'Website'}</title>
+            <title>Ley | {props.title || 'Support'}</title>
             <meta name="description" content={props.description || defaultDescription}/>
             <meta name="viewport" content="width=device-width, initial-scale=1"/>
             <link rel="icon" href="/favicon.ico"/>
