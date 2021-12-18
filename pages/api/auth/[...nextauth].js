@@ -6,7 +6,7 @@ const prisma = new PrismaClient();
 
 export default NextAuth({
     adapter: PrismaAdapter(prisma),
-    debug: true,
+    debug: false,
     providers: [
         {
             id: "discord",
