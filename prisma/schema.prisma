@@ -60,6 +60,7 @@ model VerificationToken {
 model Ticket {
     id          String      @id @default(cuid())
     state       State       @default(OPEN)
+    hidden      Boolean     @default(false)
     author      String
     addon       BigInt
     title       String
@@ -67,6 +68,7 @@ model Ticket {
     createdAt   DateTime    @default(now())
     latestReply DateTime?
     replies     TicketReplies[]
+    attachments TicketAttachments[]
 
     user        User    @relation(fields: [author], references: [id])
 }
@@ -81,9 +83,20 @@ enum State {
 model TicketReplies {
     id          String @id @default(cuid())
     ticketId    String
+    deleted     Boolean @default(false)
     author      String
     description String
 
     ticket      Ticket @relation(fields: [ticketId], references: [id])
     user        User   @relation(fields: [author], references: [id])
+}
+
+model TicketAttachments {
+    id          String @id @default(cuid())
+    ticketId    String
+    author      String
+    deleted     Boolean @default(false)
+    URL         String
+
+    ticket      Ticket @relation(fields: [ticketId], references: [id])
 }
