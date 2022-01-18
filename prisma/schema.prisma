@@ -11,21 +11,13 @@ model Account {
   id                 String  @id @default(cuid())
   userId             String
   type               String
-  provider           String
-  providerAccountId  String  @unique
-  refresh_token      String?
-  access_token       String?
-  expires_at         Int?
-  token_type         String?
-  scope              String?
-  id_token           String?
-  session_state      String?
+  steam_id           BigInt   @unique
+  discord_id         BigInt?  @unique
   oauth_token_secret String?
   oauth_token        String?
+  expires_at         Int?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
 }
 
 model Session {
@@ -41,10 +33,8 @@ model User {
   id            String    @id @default(cuid())
   name          String?
   email         String?   @unique
-  steamId       String?   @unique
   blocked       Boolean   @default(false)
   role          Role      @default(USER)
-  emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
@@ -71,7 +61,7 @@ model Ticket {
     id          String      @id @default(cuid())
     state       State       @default(OPEN)
     author      String
-    addon       Int
+    addon       BigInt
     title       String
     description String
     createdAt   DateTime    @default(now())
