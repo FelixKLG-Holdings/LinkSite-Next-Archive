@@ -10,14 +10,12 @@ datasource db {
 model Account {
   id                 String  @id @default(cuid())
   userId             String
-  type               String
-  steam_id           BigInt   @unique
-  discord_id         BigInt?  @unique
+  steam_id           BigInt  @unique
+  discord_id         BigInt? @unique
   oauth_token_secret String?
   oauth_token        String?
   expires_at         Int?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user               User[]
 }
 
 model Session {
@@ -26,27 +24,29 @@ model Session {
   userId       String
   expires      DateTime
 
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  blocked       Boolean   @default(false)
-  role          Role      @default(USER)
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
-  tickets       Ticket[]
-  ticketReplies TicketReplies[]
+  id        String    @id @default(cuid())
+  AccountId String
+  name      String?
+  email     String?   @unique
+  blocked   Boolean   @default(false)
+  role      Role      @default(USER)
+  image     String?
+  sessions  Session[]
+  tickets   Ticket[]
+  TicketReplies TicketReplies[]
+
+  account       Account         @relation(fields: [AccountId], references: [id], onDelete: Cascade)
 }
 
 enum Role {
-    ADMIN
-    DEV
-    SUPPORT
-    USER
+  ADMIN
+  DEV
+  SUPPORT
+  USER
 }
 
 model VerificationToken {
@@ -58,45 +58,45 @@ model VerificationToken {
 }
 
 model Ticket {
-    id          String      @id @default(cuid())
-    state       State       @default(OPEN)
-    hidden      Boolean     @default(false)
-    author      String
-    addon       BigInt
-    title       String
-    description String
-    createdAt   DateTime    @default(now())
-    latestReply DateTime?
-    replies     TicketReplies[]
-    attachments TicketAttachments[]
+  id          String              @id @default(cuid())
+  state       State               @default(OPEN)
+  hidden      Boolean             @default(false)
+  author      String
+  addon       BigInt
+  title       String
+  description String
+  createdAt   DateTime            @default(now())
+  latestReply DateTime?
+  replies     TicketReplies[]
+  attachments TicketAttachments[]
 
-    user        User    @relation(fields: [author], references: [id])
+  user User @relation(fields: [author], references: [id])
 }
 
 enum State {
-    OPEN
-    CLOSED
-    LOCKED
-    HOLD
+  OPEN
+  CLOSED
+  LOCKED
+  HOLD
 }
 
 model TicketReplies {
-    id          String @id @default(cuid())
-    ticketId    String
-    deleted     Boolean @default(false)
-    author      String
-    description String
+  id          String  @id @default(cuid())
+  ticketId    String
+  deleted     Boolean @default(false)
+  author      String
+  description String
 
-    ticket      Ticket @relation(fields: [ticketId], references: [id])
-    user        User   @relation(fields: [author], references: [id])
+  ticket Ticket @relation(fields: [ticketId], references: [id])
+  user   User   @relation(fields: [author], references: [id])
 }
 
 model TicketAttachments {
-    id          String @id @default(cuid())
-    ticketId    String
-    author      String
-    deleted     Boolean @default(false)
-    URL         String
+  id       String  @id @default(cuid())
+  ticketId String
+  author   String
+  deleted  Boolean @default(false)
+  URL      String
 
-    ticket      Ticket @relation(fields: [ticketId], references: [id])
+  ticket Ticket @relation(fields: [ticketId], references: [id])
 }
