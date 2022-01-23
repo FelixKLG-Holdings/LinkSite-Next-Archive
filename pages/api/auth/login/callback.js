@@ -1,5 +1,5 @@
 import {OpenIDValidate} from "lib/auth/SteamOpenId";
-import {withSessionRoute} from "lib/auth/withSession.js";
+// import {withSessionRoute} from "lib/auth/withSession.js";
 
 
 export default async function callback(req, res) {
