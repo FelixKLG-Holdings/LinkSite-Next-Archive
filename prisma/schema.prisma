@@ -14,21 +14,12 @@ model Account {
   oauthToken            String?
   oauthTokenSecret      String?
   expiresAt             Int?
-  session               Session[]
-  user                  User[]
-}
-
-model Session {
-  id                String   @id @default(cuid())
-  sessionToken      String   @unique
-  AccountId         String
-  expires           DateTime
-
-  account      Account  @relation(fields: [AccountId], references: [id], onDelete: Cascade)
+  user                  User?
 }
 
 model User {
   id                String      @id @default(cuid())
+  account           Account     @relation(fields: [AccountId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   AccountId         String
   name              String?
   email             String?     @unique
@@ -39,7 +30,6 @@ model User {
   TicketReplies     TicketReplies[]
   ticketAttachments TicketAttachments[]
 
-  account           Account     @relation(fields: [AccountId], references: [id], onDelete: Cascade)
 }
 
 enum Role {
