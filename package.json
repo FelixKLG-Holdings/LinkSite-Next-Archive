@@ -7,6 +7,9 @@
     "start": "next start",
     "lint": "next lint"
   },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
   "dependencies": {
     "@apollo/client": "^3.5.7",
     "@fortawesome/fontawesome-svg-core": "^1.2.36",
@@ -23,6 +26,7 @@
     "chart.js": "^3.7.0",
     "clipboard": "^2.0.8",
     "cuid": "^2.1.8",
+    "framer-motion": "^6.2.1",
     "graphql": "^16.2.0",
     "highlight.js": "^11.4.0",
     "iron-session": "^6.0.5",
