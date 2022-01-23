@@ -1,30 +1,29 @@
-import {OpenIDValidate} from "lib/auth/SteamOpenId";
-// import {withSessionRoute} from "lib/auth/withSession.js";
+import { OpenIDValidate } from "lib/auth/SteamOpenId";
+import { withSessionRoute } from "lib/auth/withSession.js";
+import { Login } from 'lib/user/userLogin';
 
 
-export default async function callback(req, res) {
-    try {
-        const SteamUser = await OpenIDValidate(req);
 
-        res.status(200).json(SteamUser)
-    } catch (e) {
-        console.log(e)
+export default withSessionRoute(loginRoute);
+
+async function loginRoute(req, res) {
+
+    const SteamUser = await OpenIDValidate(req, res);
+
+    const Account = await Login(SteamUser.steamid, SteamUser.username, SteamUser.avatar.medium)
+
+    await console.log(Account);
+
+    req.session.user = {
+        id: await Account.id,
+        steamId: await Account.steamId,
+        user: {
+            name: await Account.user.name,
+            blocked: await Account.user.blocked,
+            avatar: await Account.user.image,
+            role: await Account.user.role
+        }
     }
+    await req.session.save();
+    await res.send('done')
 }
-
-
-// export default withSessionRoute(loginRoute);
-//
-// async function loginRoute(req, res) {
-//
-//
-//
-//
-//     req.session.user = {
-//         id: 230,
-//         admin: true,
-//     };
-//     await req.session.save();
-//     res.end(200);
-// }
-
