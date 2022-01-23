@@ -11,9 +11,7 @@ async function loginRoute(req, res) {
     const SteamUser = await OpenIDValidate(req, res);
 
     const Account = await Login(SteamUser.steamid, SteamUser.username, SteamUser.avatar.medium)
-
-    await console.log(Account);
-
+    
     req.session.user = {
         id: await Account.id,
         steamId: await Account.steamId,
