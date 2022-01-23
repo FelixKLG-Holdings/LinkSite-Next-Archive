@@ -1,6 +1,6 @@
 import { OpenIDValidate } from "lib/auth/SteamOpenId";
 import { withSessionRoute } from "lib/auth/withSession.js";
-import { Login } from 'lib/user/userLogin';
+import { userLogin } from 'lib/user/userLogin';
 
 
 
@@ -10,7 +10,7 @@ async function loginRoute(req, res) {
 
     const SteamUser = await OpenIDValidate(req, res);
 
-    const Account = await Login(SteamUser.steamid, SteamUser.username, SteamUser.avatar.medium)
+    const Account = await userLogin(SteamUser.steamid, SteamUser.username, SteamUser.avatar.medium)
 
     req.session.account = {
         id: await Account.id,
