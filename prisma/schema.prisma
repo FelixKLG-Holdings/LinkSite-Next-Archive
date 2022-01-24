@@ -11,8 +11,8 @@ model Account {
   id                    String  @id @default(cuid())
   steamId               String  @unique
   discordId             String? @unique
-  oauthToken            String?
-  oauthTokenSecret      String?
+  discordOAuthToken     String?
+  discordOAuthRegen     String?
   expiresAt             Int?
   user                  User?
 }
