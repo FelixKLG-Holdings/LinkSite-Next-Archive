@@ -5,7 +5,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint-fix": "next lint --fix"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
@@ -28,6 +29,7 @@
     "cors": "^2.8.5",
     "crypto-js": "^4.1.1",
     "cuid": "^2.1.8",
+    "discord-oauth2": "^2.9.0",
     "framer-motion": "^6.2.1",
     "graphql": "^16.2.0",
     "highlight.js": "^11.4.0",
