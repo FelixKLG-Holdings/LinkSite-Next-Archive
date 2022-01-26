@@ -1,7 +1,7 @@
-import { withSessionRoute } from "lib/auth/withSession";
+import { withSessionRoute } from 'lib/auth/withSession';
 
-export default withSessionRoute(user)
+export default withSessionRoute(user);
 
 async function user(req, res) {
-    res.send({account: req.session.account});
+	res.send({ account: req.session.account });
 }

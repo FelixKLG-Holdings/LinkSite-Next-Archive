@@ -29,7 +29,6 @@ model User {
   tickets           Ticket[]
   TicketReplies     TicketReplies[]
   ticketAttachments TicketAttachments[]
-
 }
 
 enum Role {
