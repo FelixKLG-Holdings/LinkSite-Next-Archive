@@ -1,6 +1,6 @@
 import { OpenIDValidate } from 'lib/auth/SteamOpenId';
 import { withSessionRoute } from 'lib/auth/withSession.js';
-import { userAccount } from '/lib/user/userLogin';
+import { userAccount } from '/lib/user/userAccount';
 
 
 export default withSessionRoute(loginRoute);
