@@ -5,6 +5,13 @@ import { userAccount } from 'lib/user/userAccount';
 
 export default withSessionRoute(loginRoute);
 
+
+/**
+ *
+ * @param {object} req
+ * @param {object} res
+ * @returns {Promise<void>}
+ */
 async function loginRoute(req, res) {
 
 	const SteamUser = await OpenIDValidate(req, res);
