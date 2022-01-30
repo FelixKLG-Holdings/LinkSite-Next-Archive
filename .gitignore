@@ -14,6 +14,8 @@ package.lock
 
 # testing
 /coverage
+/pages/dev/
+/pages/api/dev
 
 # next.js
 /.next/
