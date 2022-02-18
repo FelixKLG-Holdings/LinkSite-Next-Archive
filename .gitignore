@@ -6,12 +6,6 @@
 /.pnp
 .pnp.js
 
-# Lock Files
-yarn.lock
-.yarnrc.yml
-package.lock
-
-
 # testing
 /coverage
 /pages/dev/
