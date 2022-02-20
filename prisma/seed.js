@@ -2,8 +2,8 @@ const {PrismaClient} = require('@prisma/client');
 const prisma = new PrismaClient();
 
 async function main() {
-    const sId = Math.floor(Math.random() * 100000000).toString();
-    const sId1 = Math.floor(Math.random() * 100000000).toString();
+    const sId = Math.floor(Math.random() * 100000000);
+    const sId1 = Math.floor(Math.random() * 100000000);
 
     await prisma.account.create({
         data: {
@@ -14,7 +14,7 @@ async function main() {
                 },
             }, discord: {
                 create: {
-                    id: Math.floor(Math.random() * 100000000).toString(),
+                    id: BigInt(Math.floor(Math.random() * 100000000)),
                     username: 'Wumpus',
                     discrim: '0001',
                     token: 'test',
@@ -27,7 +27,7 @@ async function main() {
 
     await prisma.account.update({
         where: {
-            steamId: sId,
+            steamId: BigInt(sId),
         }, data: {
             discord: {
                 update: {
@@ -39,7 +39,7 @@ async function main() {
 
     await prisma.account.create({
         data: {
-            steamId: sId1,
+            steamId: BigInt(sId1),
             user: {
                 create: {
                     name: 'FelixKLG',
@@ -51,7 +51,7 @@ async function main() {
 
     await prisma.account.update({
         where: {
-            steamId: sId1,
+            steamId: BigInt(sId1),
         }, data: {
             discord: {
                 create: {
@@ -63,12 +63,12 @@ async function main() {
 
     await prisma.account.delete({
         where: {
-            steamId: sId
+            steamId: BigInt(sId)
         }
     })
     await prisma.account.delete({
         where: {
-            steamId: sId1
+            steamId: BigInt(sId1)
         }
     })
 }

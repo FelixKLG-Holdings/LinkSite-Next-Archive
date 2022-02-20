@@ -9,7 +9,7 @@ datasource db {
 
 model Account {
   id        String  @id @default(cuid())
-  steamId   String  @unique
+  steamId   BigInt  @unique
   user      User?
   discord   Discord?
 }
@@ -17,7 +17,7 @@ model Account {
 model Discord {
     account     Account @relation(fields: [accountId], references: [id], onDelete: Cascade, onUpdate: Cascade)
     accountId   String
-    id          String? @unique
+    id          BigInt? @unique
     username    String?
     discrim     String?
     token       String
