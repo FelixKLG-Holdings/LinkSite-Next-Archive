@@ -18,13 +18,13 @@ async function loginRoute(req, res) {
 
 	const Account = await userAccount(SteamUser);
 	req.session.account = {
-		id: await Account.id,
-		steamId: await Account.steamId,
+		id: Account.id,
+		steamId: Account.steamId.toString(),
 		user: {
-			name: await Account.user.name,
-			blocked: await Account.user.blocked,
-			avatar: await Account.user.image,
-			role: await Account.user.role,
+			name: Account.user.name,
+			blocked: Account.user.blocked,
+			avatar: Account.user.image,
+			role: Account.user.role,
 		},
 	};
 	await req.session.save();
