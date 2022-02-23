@@ -13,7 +13,6 @@ export default withSessionRoute(loginRoute);
  * @returns {Promise<void>}
  */
 async function loginRoute(req, res) {
-
 	const SteamUser = await OpenIDValidate(req, res);
 
 	const Account = await userAccount(SteamUser);
