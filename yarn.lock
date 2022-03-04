@@ -1614,16 +1614,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.19.0":
-  version: 0.19.2
-  resolution: "axios@npm:0.19.2"
-  dependencies:
-    follow-redirects: 1.5.10
-  checksum: dcace11a0a25fdf9b3b97fc9d011d23dd9c67cc13d91778080482ddddbbfe731f7410a090b11aa0bbbdf83686c5911ccb4289fd3683b7488c1b0c4d3c882380c
-  languageName: node
-  linkType: hard
-
-"axios@npm:^0.21.4":
+"axios@npm:^0.21.2, axios@npm:^0.21.4":
   version: 0.21.4
   resolution: "axios@npm:0.21.4"
   dependencies:
@@ -1995,15 +1986,6 @@ __metadata:
     supports-color:
       optional: true
   checksum: 14472d56fe4a94dbcfaa6dbed2dd3849f1d72ba78104a1a328047bb564643ca49df0224c3a17fa63533fd11dd3d4c8636cd861191232a2c6735af00cc2d4de16
-  languageName: node
-  linkType: hard
-
-"debug@npm:=3.1.0":
-  version: 3.1.0
-  resolution: "debug@npm:3.1.0"
-  dependencies:
-    ms: 2.0.0
-  checksum: 0b52718ab957254a5b3ca07fc34543bc778f358620c206a08452251eb7fc193c3ea3505072acbf4350219c14e2d71ceb7bdaa0d3370aa630b50da790458d08b3
   languageName: node
   linkType: hard
 
@@ -2623,15 +2605,6 @@ __metadata:
   version: 3.2.5
   resolution: "flatted@npm:3.2.5"
   checksum: 3c436e9695ccca29620b4be5671dd72e5dd0a7500e0856611b7ca9bd8169f177f408c3b9abfa78dfe1493ee2d873e2c119080a8a9bee4e1a186a9e60ca6c89f1
-  languageName: node
-  linkType: hard
-
-"follow-redirects@npm:1.5.10":
-  version: 1.5.10
-  resolution: "follow-redirects@npm:1.5.10"
-  dependencies:
-    debug: =3.1.0
-  checksum: 0edc4b74e37e7b88ee716188a8f2a790238877c1d954f00c7b78d560f3bef40061c130536d13bee8e47b4e8e71edf1175a2de2729e51ab8206e4646b2370e484
   languageName: node
   linkType: hard
 
@@ -3425,7 +3398,7 @@ __metadata:
     micro: ^9.3.4
     micro-cors: ^0.1.1
     next: 12.1.0
-    node-steam-openid: ^1.0.0
+    node-steam-openid: ^1.0.1
     postcss: ^8.4.7
     prisma: ^3.10.0
     prop-types: ^15.8.1
@@ -3836,13 +3809,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"node-steam-openid@npm:^1.0.0":
-  version: 1.0.0
-  resolution: "node-steam-openid@npm:1.0.0"
+"node-steam-openid@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "node-steam-openid@npm:1.0.1"
   dependencies:
-    axios: ^0.19.0
+    axios: ^0.21.2
     openid: ^2.0.6
-  checksum: 8b14280830d2f77a45ed307694f1c9b67e9fa2735ae0b6b4a25a94cac3f3999d245f1deceeb85ca953aa559b6645eb2991b0c7cae28ecfcac9e7bf606a5c5d5c
+  checksum: 61a0da9ffdaa7520fc5c7b45620c29955773433f5b1e8b6eb97b7ae4cdfcff5260b6bda0b2252a26ac4827cfd8f07a8f8fae0cce9416aebb22c32b2026b1ce88
   languageName: node
   linkType: hard
 
