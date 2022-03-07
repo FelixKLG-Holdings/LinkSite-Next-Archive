@@ -1,34 +1,86 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Welcome!
 
-## Getting Started
+This is my attempt at making a site for support tickets with a function API.
 
-First, run the development server:
+At the time of me writing this it is nowhere near complete however it's making me learn quite a lot.
 
-```bash
-npm run dev
-# or
-yarn dev
+# Installation
+
+**Download the code from github!**
+If you did not download this code form github you're not downloading the official version.
+
+you can either download it via a `git clone` or by using the green download button.
+
+
+### Site Installation (production - Ubuntu)
+requirements: NodeJS v16+ & MySQL/MariaDB
+```shell
+cd /var/www/
+git clone git@github.com:FelixKLG/LinkSite-v2
+
+cd LinkSite-v2
+
+npm i # Yarn also works
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+(deploying this on Vercel or Netlify will probably also work btw)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+# Configuration
 
-## Learn More
+Clone the .env.example.local as `.env.production.local` 
 
-To learn more about Next.js, take a look at the following resources:
+Inside you'll find all sorts of fields; each field has a comment above it to explain the purpose of it.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Set these to whatever you require, the site will error if this is done incorrectly.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Fields which have `# DO NOT TOUCH -- AUTO GENERATED!` above them are automatically generated from the other values you input, please only alter these if you know what you're doing with the stack used.
 
-## Deploy on Vercel
+# Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The following commands will start a webserver on the port `3000` 
+```shell
+npm run prisma:deploy
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+npm run build
+
+npm run start
+```
+
+To make the Next webserver restart on boot you'll have to create a systemd config (there are other options as well)
+
+Example config:
+```service
+[Unit]
+Description=Run Vercel web server
+
+[Service]
+User=ubuntu
+WorkingDirectory=/var/www/LinkSite-v2/
+ExecStart=/usr/bin/npm run start
+Restart=on-failiure
+[Install]
+WantedBy=multi-user.target
+```
+
+
+You should use Nginx & Cloudflare to proxy this connection as well.
+
+# Development
+
+Git clone a local set of files, copy the env into `.env.development.local`.
+
+Node 16+ and MySQL is required to develop onto this.
+
+set `NODE_ENV` to `development`
+
+Any changes to the schema requires you run
+
+```shell
+npm run prisma:push # Push changes to the database
+
+npm run prisma:migrate # Create 
+
+npm run prisma:generate
+```
