@@ -1,5 +1,5 @@
-import { OpenIDValidate } from 'lib/auth/SteamOpenId';
-import { withSessionRoute } from 'lib/auth/withSession.js';
+import { OpenIDValidate } from 'lib/auth/user/SteamOpenId';
+import { withSessionRoute } from 'lib/auth/user/withSession.js';
 import { userAccount } from 'lib/user/userAccount';
 
 

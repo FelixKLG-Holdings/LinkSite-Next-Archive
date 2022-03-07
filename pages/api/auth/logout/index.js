@@ -1,4 +1,4 @@
-import { withSessionRoute } from 'lib/auth/withSession';
+import { withSessionRoute } from 'lib/auth/user/withSession';
 
 export default withSessionRoute(user);
 

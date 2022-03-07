@@ -1,4 +1,4 @@
-import { getOpenIDLink } from '/lib/auth/SteamOpenId';
+import { getOpenIDLink } from '/lib/auth/user/SteamOpenId';
 
 /**
  *
