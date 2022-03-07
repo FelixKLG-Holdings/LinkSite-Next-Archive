@@ -20,6 +20,7 @@ model Discord {
     id          BigInt? @unique
     username    String?
     discrim     String?
+    avatar      String?
     token       String
     regenToken  String
     tokenExp    Int
