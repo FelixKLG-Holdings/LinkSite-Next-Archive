@@ -7,6 +7,9 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
+    "prisma:deploy": "dotenv -e ./.env.production.local npx prisma db push",
+    "prisma:push": "dotenv -e ./.env.development.local npx prisma db push",
+    "prisma:generate": "dotenv -e ./.env.development.local npx prisma generate",
     "prisma:migrate": "dotenv -e ./.env.development.local npx prisma migrate dev",
     "prisma:studio": "dotenv -e ./.env.development.local npx prisma studio"
   },
