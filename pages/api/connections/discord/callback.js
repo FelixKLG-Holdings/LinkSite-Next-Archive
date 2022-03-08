@@ -1,5 +1,5 @@
 import { getToken, getUser } from '/lib/auth/Discord/actions';
-import { updateDiscordInfo, addDiscordId, setDiscordToken, getDiscordToken } from '/lib/auth/Discord/database';
+import { addDiscordInfo, setDiscordToken, getDiscordToken } from '/lib/auth/Discord/database';
 import { withSessionRoute } from '/lib/auth/user/withSession';
 
 export default withSessionRoute(callback);
@@ -26,11 +26,10 @@ async function callback(req, res) {
  * @returns {Promise<void>}
  */
 async function updateDatabaseInfo(session) {
-	const { id } = session;
 	const token = await getDiscordToken(session);
 
 	const discordUser = await getUser(token);
 
-	await addDiscordId(session, discordUser);
+	await addDiscordInfo(session, discordUser);
 
 }
