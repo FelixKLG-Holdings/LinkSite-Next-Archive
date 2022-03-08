@@ -87,7 +87,3 @@ model TicketAttachments {
     deleted   Boolean @default(false)
     URL       String
 }
-
-model Push {
-    lol String?
-}
