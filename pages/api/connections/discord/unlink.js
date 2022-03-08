@@ -1,4 +1,4 @@
-import { getDiscord ,getDiscordToken, removeDiscord } from '/lib/auth/Discord/database';
+import { getDiscord, getDiscordToken, removeDiscord } from '/lib/auth/Discord/database';
 import { revokeToken } from '/lib/auth/Discord/actions';
 import { withSessionRoute } from '/lib/auth/user/withSession';
 
@@ -7,7 +7,7 @@ export default withSessionRoute(unlink);
 async function unlink(req, res) {
 
 	if (!await getDiscord(req.session.account).discord) {
-		res.status(403).json({error: 'You have no linked Discord account.'});
+		res.status(403).json({ error: 'You have no linked Discord account.' });
 		return;
 	}
 
