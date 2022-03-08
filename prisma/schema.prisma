@@ -23,7 +23,7 @@ model Discord {
     avatar      String?
     token       String
     regenToken  String
-    tokenExp    Int
+    tokenExp    DateTime
 }
 
 model User {
