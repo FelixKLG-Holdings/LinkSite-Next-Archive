@@ -15,8 +15,8 @@ model Account {
 }
 
 model Discord {
-    account     Account @relation(fields: [accountId], references: [id], onDelete: Cascade, onUpdate: Cascade)
     accountId   String
+    account     Account @relation(fields: [accountId], references: [id], onDelete: Cascade, onUpdate: Cascade)
     id          BigInt? @unique
     username    String?
     discrim     Int?
