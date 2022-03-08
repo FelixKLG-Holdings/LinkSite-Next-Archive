@@ -1,5 +1,5 @@
 import { withSessionRoute } from '/lib/auth/user/withSession';
-import { getDiscordToken } from 'lib/auth/Discord/database';
+import { getDiscordToken } from 'lib/auth/discord/database';
 
 export default withSessionRoute(test);
 

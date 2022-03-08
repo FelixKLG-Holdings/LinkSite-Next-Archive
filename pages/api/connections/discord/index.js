@@ -1,4 +1,4 @@
-import { getDiscord } from '/lib/auth/Discord/database';
+import { getDiscord } from '/lib/auth/discord/database';
 import { withSessionRoute } from '/lib/auth/user/withSession';
 
 export default withSessionRoute(getDiscordAccount);

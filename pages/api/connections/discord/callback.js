@@ -1,5 +1,5 @@
-import { getToken, getUser } from '/lib/auth/Discord/actions';
-import { addDiscordInfo, setDiscordToken, getDiscordToken } from '/lib/auth/Discord/database';
+import { getToken, getUser } from '/lib/auth/discord/actions';
+import { addDiscordInfo, setDiscordToken, getDiscordToken } from '/lib/auth/discord/database';
 import { withSessionRoute } from '/lib/auth/user/withSession';
 
 export default withSessionRoute(callback);

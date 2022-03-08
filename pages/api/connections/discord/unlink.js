@@ -1,5 +1,5 @@
-import { getDiscord, getDiscordToken, removeDiscord } from '/lib/auth/Discord/database';
-import { revokeToken } from '/lib/auth/Discord/actions';
+import { getDiscord, getDiscordToken, removeDiscord } from '/lib/auth/discord/database';
+import { revokeToken } from '/lib/auth/discord/actions';
 import { withSessionRoute } from '/lib/auth/user/withSession';
 
 export default withSessionRoute(unlink);
